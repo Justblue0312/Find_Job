@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Main Section -->
+  <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="">
+          <img class="singleProject__preview1" src="{{ job.job_image.url }}" alt="portfolio thumbnail" />
+          <hr><hr><hr>
+          
+          <p><h2 class="singleProject__title">{{ job.title }}</h2></p>
+
+          <h3 class="singleProject__subtitle">Job Description</h3>
+          <div class="singleProject__info">
+            {{job.jobs_desc|linebreaks}}<br />
+          </div>
+
+          <div class="comments">
+            <h3 class="singleProject__subtitle">Company Description</h3>
+            <div>
+              Name: {{job.company_name}}
+              
+            </div><br />
+            <div>
+              Our Infomation:
+            </div>
+            <ul class="project--rating" style="margin-left:5%;">
+                <li>Location: {{job.company_location}}</li>
+                <li>Phone: {{job.company_phone}}</li>
+                <li>Email: {{job.company_email}}</li>
+            </ul>
+          </div>
+
+          <div class="comments">
+            <h3 class="devInfo__subtitle">Requires Skills</h3>
+            <div class="devInfo__otherSkills">
+            {% for need in job.jobs_tags.all %}
+            <span class="tag tag--pill tag--sub tag--lg">
+                <small>{{need}}</small>
+            </span>
+            {% endfor %}
+            
+            </div>
+          </div>
+
+          <div class="comments">
+            <h3 class="devInfo__subtitle">Post By: {{job.author}}</h3>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+{% endblock content %}
+
+

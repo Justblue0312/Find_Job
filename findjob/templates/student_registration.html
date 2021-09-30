@@ -1,0 +1,38 @@
+{% extends 'main.html' %} 
+
+{% load widget_tweaks %} 
+{% load static %}
+
+{% block content %}
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/icon.svg' %}" alt="icon" />
+      </a>
+      <h3>Account Register</h3>
+    </div>
+
+    <form class="form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+        
+        <div class="form__field">
+        {{field.label_tag }}
+        {% comment %} {% render_field field class="form-control" %} {% endcomment %}
+        {{field}}
+
+        {% for error in field.errors %}
+            <span style="color:red">{{ error }}</span>
+        {% endfor %}
+        
+        {% endfor %}
+        </div>
+          <div class="auth__actions">
+              <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
+            </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

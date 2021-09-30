@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  <main class="messagePage my-xl">
+    <div class="content-box">
+      <div class="message">
+        <a class="backButton" href="{% url 'approvedJobs' %}"><i class="im im-angle-left"></i></a>
+        <h2 class="message__subject">{{application.jobpost}}</h4>
+          <a href="profile.html" class="message__author">Applicant: {{application.applicant}}</a>
+          <p class="message__date">{{application.date_applied}}</p>
+          <div class="message__body">
+            {{application.description|linebreaks}}
+          </div>
+            <hr>
+          <h5>Approval:</h5>
+          <form class="form" method="POST">
+          {% csrf_token %}
+            <!-- Input:Text -->
+            {% for field in form %}
+
+            <div class="form__field">
+                <label for="formInput#text">{{field.label}}</label>
+                {{field}}
+            </div>
+
+            {% endfor %}
+
+            <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+        </form>
+      </div>
+
+      
+    </div>
+  </main>
+
+{% endblock content %}
+
+
+

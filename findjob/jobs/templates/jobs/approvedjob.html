@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+  <main class="inbox my-xl">
+    <div class="content-box">
+      <div class="settings">
+            <h3 class="inbox__title">All Applications(<span>{{unreadCount}}</span>)</h3>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'addapp' %}" style="margin-bottom: 25px;"><i class="im im-plus"></i> Add Applications</a>
+          </div>
+
+      <ul class="messages">
+        {% for app in applications %}
+        {% if app.is_approved == False %}
+        <li class="message message--unread">
+        {% else %}
+        <li class="message">
+        {% endif %}
+        
+          <a href="{% url 'approvedJob' app.id%}">
+            <span class="message__author">{{app.applicant}}</span>
+            <span class="message__subject">{{app.jobpost}}</span>
+            <span class="message__date">{{app.date_applied}}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+
+{% endblock content %}
+
+
+

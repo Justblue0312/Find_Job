@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<main class="settingsPage profile my-md">
+    <div class="container">
+      <div class="layout">
+
+        <div class="column column--2of3">
+          <div class="hero-section__box">
+              <h2><span>Job Listings</span></h2>
+          </div>
+          
+          <div class="settings">
+            <h3 class="settings__title">Job Available</h3>
+          </div>
+
+          <table class="settings__table">
+            {% if jobs %}
+            {% for post in jobs %}
+            <tr>
+              <td class="settings__thumbnail">
+                <a href="{% url 'job' post.id%}"><img src="{{post.job_image.url}}" alt="Jobs Thumbnail" /></a>
+              </td>
+
+              <td class="settings__tableInfo">
+                <a href="{% url 'job' post.id%}">{{post.title}}</a>
+                <p>
+                  {{post.jobs_desc|slice:"150"}} ...
+                </p>
+                <p>
+                  We need 
+                  <span class="tag"> 
+                    <small>{{post.jobs_required}}</small>
+                </span>
+                   people!
+                </p>
+                <p class="card-text mb-0">
+                <i class="fas fa-users"></i> : {{ post.post.all.count }}
+                </p>
+                <footer class="blockquote-footer"></footer>
+                <small class="text-muted">{{ post.timestamp|timesince }} ago</small>
+                <h3 class="devInfo__subtitle">Requires Skills</h3>
+              <div class="devInfo__otherSkills">
+                {% for need in post.jobs_tags.all %}
+                <span class="tag tag--pill tag--sub tag--lg">
+                  <small>{{need}}</small>
+                </span>
+                {% endfor %}
+                
+              </div>
+              </td>
+              
+              
+            </tr>
+            {% endfor %}
+            {% else %}
+            <div class="row p-3">
+                  <div class="col-sm-12">
+                      <div class="container text-center">
+                          <p>No available Job Listings.</p>
+                      </div>
+                  </div>
+              </div>
+            {% endif %}
+            
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}
+
+
+
