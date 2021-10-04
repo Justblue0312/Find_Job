@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from projects.models import Project, Tag
-from users.models import Student, User
+from users.models import Student, User, Lecture
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,8 +9,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class LectureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lecture
+        fields = '__all__'
+
+
 class StudentSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=False)
 
     class Meta:
         model = Student
@@ -20,12 +25,10 @@ class StudentSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = '__all__'
+        fields = ['name']
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    owner = StudentSerializer(many=False)
-    tags = TagSerializer(many=True)
 
     class Meta:
         model = Project
