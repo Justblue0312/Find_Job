@@ -26,8 +26,7 @@ urlpatterns = [
     path('', include('users.urls')),
     path('jobs/', include('jobs.urls')),
 
-    path('api/', include('api.urls')),
-    path('project_api/', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
