@@ -1,1 +1,1 @@
-web: guincorn findjob.wsgi
+web: guincorn findjob.wsgi --log-file -
