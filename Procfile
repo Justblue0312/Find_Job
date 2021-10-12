@@ -1,1 +1,3 @@
-web: guincorn findjob.wsgi --log-file -
+web: gunicorn findjob.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
