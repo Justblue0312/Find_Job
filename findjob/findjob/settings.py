@@ -26,7 +26,7 @@ SECRET_KEY = 'vj!lgx)$9k*vtp5s)pm&fqe8yn7i_mdy=n-bmy3l#relsyc6j9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://findjobsweb.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'findjobsweb.herokuapp.com']
 
 
 # Application definition
