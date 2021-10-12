@@ -1,0 +1,18 @@
+{% extends 'main.html' %} {% block content %} {% load static %}
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/icon.svg' %}" alt="icon" />
+      </a>
+      <h3>Account Register</h3>
+      <p>Create a new account</p>
+      <a href="{% url 'student_register' %}"
+        ><button class="btn btn--main">I am a Student</button></a
+      >
+      <a href="{% url 'lecture_register' %}"><button class="btn btn--main">I am a Lecture</button></a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
